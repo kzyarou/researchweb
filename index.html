@@ -15,6 +15,12 @@
         },
     };
 </script>
+<style>
+    .hidden {
+    display: none;
+}
+
+</style>
 <script src="https://cdn.tailwindcss.com"></script>
     
     
@@ -59,12 +65,12 @@ header {
 <body>
     <header class="flex justify-between items-center bg-blue-600 text-white p-4">
         <h1 class="text-xl font-bold">STEMediaHub</h1>
-
         <!-- Menu Button -->
         <button id="menuButton" class="bg-blue-500 px-4 py-2 rounded flex items-center gap-2">
             <span id="menuIcon" class="transition-transform duration-300">☰</span>
         </button>
     </header>
+    
 
     <!-- Sidebar Menu -->
     <div id="sidebarMenu" class="fixed top-0 left-0 h-full w-64 bg-white shadow-lg transform -translate-x-full transition-transform duration-300">
@@ -77,8 +83,6 @@ header {
             <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-200 rounded">Inspiration of the web</a>
             <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-200 rounded">Provide feedback!</a>
             <hr class="my-2">
-            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-200 rounded">Settings</a>
-            <a href="https://www.pornhub.com/" class="block px-4 py-2 text-gray-700 hover:bg-gray-200 rounded">Logout</a>
         </nav>
     </div>
 
@@ -130,7 +134,18 @@ header {
          
          
          
-         
+        <script>
+document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
+        let menuButton = document.getElementById("menuButton");
+        if (menuButton) {
+            menuButton.click(); // Triggers the button's click event
+        }
+    }
+});
+
+        </script>
+    
     </p>
 </body>
 </html>
