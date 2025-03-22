@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script src="https://unpkg.com/unlazy@0.11.3/dist/unlazy.with-hashing.iife.js" defer init></script>
+    <script type="text/javascript">
+        window.tailwind.config = {
+            darkMode: ['class'],
+            theme: {
+                extend: {
+                    colors: {
+                        border: 'hsl(var(--border))',
+                        input: 'hsl(var(--input))',
+                        ring: 'hsl(var(--ring))',
+                        background: 'hsl(var(--background))',
+                        foreground: 'hsl(var(--foreground))',
+                        primary: {
+                            DEFAULT: 'hsl(var(--primary))',
+                            foreground: 'hsl(var(--primary-foreground))'
+                        },
+                        secondary: {
+                            DEFAULT: 'hsl(var(--secondary))',
+                            foreground: 'hsl(var(--secondary-foreground))'
+                        },
+                        destructive: {
+                            DEFAULT: 'hsl(var(--destructive))',
+                            foreground: 'hsl(var(--destructive-foreground))'
+                        },
+                        muted: {
+                            DEFAULT: 'hsl(var(--muted))',
+                            foreground: 'hsl(var(--muted-foreground))'
+                        },
+                        accent: {
+                            DEFAULT: 'hsl(var(--accent))',
+                            foreground: 'hsl(var(--accent-foreground))'
+                        },
+                        popover: {
+                            DEFAULT: 'hsl(var(--popover))',
+                            foreground: 'hsl(var(--popover-foreground))'
+                        },
+                        card: {
+                            DEFAULT: 'hsl(var(--card))',
+                            foreground: 'hsl(var(--card-foreground))'
+                        },
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer base {
+            :root {
+                --background: 0 0% 100%;
+                --foreground: 240 10% 3.9%;
+                --card: 0 0% 100%;
+                --card-foreground: 240 10% 3.9%;
+                --popover: 0 0% 100%;
+                --popover-foreground: 240 10% 3.9%;
+                --primary: 240 5.9% 10%;
+                --primary-foreground: 0 0% 98%;
+                --secondary: 240 4.8% 95.9%;
+                --secondary-foreground: 240 5.9% 10%;
+                --muted: 240 4.8% 95.9%;
+                --muted-foreground: 240 3.8% 46.1%;
+                --accent: 240 4.8% 95.9%;
+                --accent-foreground: 240 5.9% 10%;
+                --destructive: 0 84.2% 60.2%;
+                --destructive-foreground: 0 0% 98%;
+                --border: 240 5.9% 90%;
+                --input: 240 5.9% 90%;
+                --ring: 240 5.9% 10%;
+                --radius: 0.5rem;
+            }
+            .dark {
+                --background: 240 10% 3.9%;
+                --foreground: 0 0% 98%;
+                --card: 240 10% 3.9%;
+                --card-foreground: 0 0% 98%;
+                --popover: 240 10% 3.9%;
+                --popover-foreground: 0 0% 98%;
+                --primary: 0 0% 98%;
+                --primary-foreground: 240 5.9% 10%;
+                --secondary: 240 3.7% 15.9%;
+                --secondary-foreground: 0 0% 98%;
+                --muted: 240 3.7% 15.9%;
+                --muted-foreground: 240 5% 64.9%;
+                --accent: 240 3.7% 15.9%;
+                --accent-foreground: 0 0% 98%;
+                --destructive: 0 62.8% 30.6%;
+                --destructive-foreground: 0 0% 98%;
+                --border: 240 3.7% 15.9%;
+                --input: 240 3.7% 15.9%;
+                --ring: 240 4.9% 83.9%;
+            }
+        }
+    </style>
+    <style>
+        /* Dropdown content hidden by default */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #f8f9fa;
+            border: 1px solid #ccc;
+            padding: 1rem;
+            width: 200px;
+            border-radius: 0.375rem;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.3s, transform 0.3s ease;
+        }
+
+        /* Rotate the arrow when clicked */
+        .arrow {
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        /* Dropdown and arrow rotation animation when active */
+        .active .arrow {
+            transform: rotate(90deg);
+        }
+
+        .active .dropdown-content {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="bg-background p-8">
+        <h2 class="text-3xl font-bold mb-4">About Us</h2>
+        <h1 class="text-5xl font-extrabold mb-4">Setting Up Standard On <br><span class="text-muted" style="color: #878787;">Science Engineering</span></h1>
+        <div class="flex flex-col md:flex-row md:items-center mb-8">
+            <div class="flex-1">
+                <h3 class="text-xl font-semibold mb-2">Our Stories</h3>
+                <p class="text-muted-foreground mb-4">
+                    At STEMediaHub, we are a dedicated team of six passionate researchers who believe in the power of education to shape the future. Our journey began with a shared realization: many students face significant challenges when transitioning from Grade 10 to Grade 11, particularly when they are introduced to the complex world of STEM (Science, Technology, Engineering, and Mathematics). The shift can be overwhelming, leaving students feeling lost, frustrated, and ultimately discouraged from continuing their studies.
+                </p>
+                <a href="#" class="bg-secondary text-secondary-foreground hover:bg-secondary/80 px-4 py-2 rounded toggle-btn">
+                    Learn More <span class="arrow">→</span>
+                </a>
+                <div class="dropdown-content">
+                    <p style="color: black;">We set out to create a platform that would bridge this gap, offering students the support they need to not only survive but thrive in their academic journey. STEMediaHub was born from our desire to provide a space where both Grade 10 and Grade 11 students could find the resources, guidance, and encouragement to stay on track and excel in their studies.
+
+                        Our mission is simple: to be a guiding light for students navigating the tough but rewarding path of STEM education. Through our carefully curated resources, insightful reviews, and expert advice, we aim to empower students to overcome the hurdles that often lead to disengagement. We want to make STEM accessible, exciting, and most importantly, manageable. Whether you are reviewing foundational concepts from Grade 10 or diving deeper into more complex topics in Grade 11, STEMediaHub is here to help you keep up with your studies and reach your full potential.
+                        
+                        At STEMediaHub, we are more than just researchers – we are mentors, advisors, and advocates for the future of STEM students. Together, we are working to ensure that every student has the tools and confidence they need to succeed, not just in their classes, but in their future careers and endeavors.
+                        
+                        Welcome to STEMediaHub – where your STEM journey begins, and success is just a step away.</p>
+                </div>
+            </div>
+            <img aria-hidden="true" alt="workspace" src="https://openui.fly.dev/openui/400x400.svg?text=📸" class="rounded-lg ml-0 md:ml-4" />
+        </div>
+        <h3 class="text-xl font-semibold mb-2">We Do This</h3>
+        <h4 class="text-2xl font-bold mb-4">For A Single Cause</h4>
+        <p class="text-muted-foreground mb-4">
+            Our entire team works remotely in countries around the world. We’re passionate about what a game-changer it is to have that freedom. It also attracts more talented, diverse, and interesting people to our growing company!
+        </p>
+        <p class="text-muted-foreground mb-4">
+            Ever since the pandemic, many people realized that in order to retain their work culture, they need to move one step above what’s ordinary.
+        </p>
+        <p class="text-muted-foreground mb-4">
+            Enter the TalentHubb culture × business incubation programs. Where we train, upskill and distribute talent to whoever needs it.
+        </p>
+        <a href="#" class="bg-secondary text-secondary-foreground hover:bg-secondary/80 px-4 py-2 rounded">Read Our Manifesto →</a>
+        <div class="mt-4">
+            <p class="text-muted-foreground">Marissa Soe Einclant</p>
+            <p class="font-semibold">Chair of TalentHubb</p>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector('.toggle-btn').addEventListener('click', function (event) {
+            event.preventDefault();
+            const dropdown = document.querySelector('.dropdown-content');
+            const button = this;
+
+            // Toggle the dropdown visibility and arrow rotation
+            dropdown.classList.toggle('active');
+            button.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

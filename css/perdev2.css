@@ -8,7 +8,7 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #FEFF37;
+    background-color: #0100C8;
 }
 body {
   background-image: url('stockimages/oralomback.jpg'); /* Replace with your image URL */
@@ -25,12 +25,11 @@ main {
     margin-top: 0;
     margin-bottom: 20px;
     padding-top: 0;
-    font-size: 70px;
+    font-size: 50px;
     padding-left: 20px;
     padding-right: 20px;
     font-family: "Lilita One", sans-serif;
-    color: #0100C8;
-  color: #0100C8; /* Text color */
+    color: #FEFF37;
     
 }
 .who-text {
@@ -65,10 +64,10 @@ main {
     text-decoration: none;
     font-size: 1.2em;
     font-weight: bold;
-    color: #FEFF37;
+    color: #0100C8;
     text-align: center;
     border-radius: 50px;
-    background: linear-gradient(145deg, #0100C8, #0100C8);
+    background: linear-gradient(145deg, #FEFF37, #FEFF37);
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
     transition: all 0.2s ease-in-out;
 }
