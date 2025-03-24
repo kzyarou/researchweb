@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Provide Feedback</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- ✅ Use correct Firebase imports -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+</head>
+<body class="bg-gray-100 h-screen">
+    <!-- Fixed Header -->
+    <header class="fixed top-0 left-0 w-full bg-blue-600 text-white p-4 flex justify-between items-center shadow-md">
+        <h1 class="text-xl font-bold">STEMediaHub</h1>
+        <!-- Menu Button -->
+        <button id="menuButton" class="bg-blue-500 px-4 py-2 rounded flex items-center gap-2">
+            <span id="menuIcon" class="transition-transform duration-300">☰</span>
+        </button>
+    </header>
+
+    <!-- Sidebar Menu -->
+    <div id="sidebarMenu" class="fixed top-0 left-0 h-full w-64 bg-white shadow-lg transform -translate-x-full transition-transform duration-300">
+        <div class="p-4 bg-blue-500 text-white flex justify-between items-center">
+            <h2 class="text-lg font-bold">Control Panel</h2>
+            <button id="closeButton" class="text-xl">&times;</button>
+        </div>
+        <nav class="p-4">
+            <a href="../index.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-200 rounded">Homepage</a>
+            <hr class="my-2">
+        </nav>
+    </div>
+
+    <!-- Centered Content -->
+    <div class="flex items-center justify-center h-full pt-16"> <!-- Added pt-16 to prevent overlap with header -->
+        <div class="bg-white p-6 rounded-lg shadow-lg w-96">
+            <h2 class="text-xl font-bold mb-4">Provide Feedback</h2>
+            <textarea id="feedback" class="w-full p-2 border rounded-lg" placeholder="Type your problem..."></textarea>
+            <button onclick="submitFeedback()" class="mt-4 w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600">Submit</button>
+            <p id="message" class="text-sm text-green-600 mt-2"></p>
+        </div>
+    </div>
+
+    <script>
+        // ✅ Correct Firebase Configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDvtA1hpxxFCTO8ehtJWT-pl7bTphNt3oI",
+            authDomain: "researchwebfeedback.firebaseapp.com",
+            projectId: "researchwebfeedback",
+            storageBucket: "researchwebfeedback.appspot.com", // ✅ Fixed Storage Bucket
+            messagingSenderId: "825424410349",
+            appId: "1:825424410349:web:09da0060ac60987d5dfee4"
+        };
+
+        // ✅ Initialize Firebase AFTER the scripts have loaded
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        // ✅ Automatically Sign in Users Anonymously
+        auth.signInAnonymously().catch(error => {
+            console.error("Anonymous sign-in failed:", error);
+        });
+
+        function submitFeedback() {
+            const feedbackText = document.getElementById("feedback").value.trim();
+            if (feedbackText === "") {
+                alert("Please enter your feedback.");
+                return;
+            }
+
+            const user = auth.currentUser;
+            if (!user) {
+                alert("User not signed in. Please try again.");
+                return;
+            }
+
+            // ✅ Store feedback in Firestore
+            db.collection("feedback").add({
+                userId: user.uid,
+                feedback: feedbackText,
+                timestamp: firebase.firestore.FieldValue.serverTimestamp()
+            })
+            .then(() => {
+                document.getElementById("message").innerText = "Feedback submitted successfully!";
+                document.getElementById("feedback").value = "";
+            })
+            .catch(error => {
+                console.error("Error submitting feedback:", error);
+                alert("Error submitting feedback. Please try again.");
+            });
+        }
+    </script>
+    <script>
+        const menuButton = document.getElementById("menuButton");
+        const menuIcon = document.getElementById("menuIcon");
+        const sidebarMenu = document.getElementById("sidebarMenu");
+        const closeButton = document.getElementById("closeButton");
+
+        menuButton.addEventListener("click", function () {
+            sidebarMenu.classList.toggle("-translate-x-full");
+            menuIcon.classList.toggle("rotate-90"); // Rotate icon 90 degrees
+        });
+
+        closeButton.addEventListener("click", function () {
+            sidebarMenu.classList.add("-translate-x-full");
+            menuIcon.classList.remove("rotate-90"); // Reset rotation
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener("click", function (event) {
+            if (!sidebarMenu.contains(event.target) && !menuButton.contains(event.target)) {
+                sidebarMenu.classList.add("-translate-x-full");
+                menuIcon.classList.remove("rotate-90"); // Reset rotation
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,87 +1,64 @@
 <!DOCTYPE html>
-
 <html>
 <head>
-		<meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
-		<title>Stemediahub</title>
+    <title>STEMediaHub</title>
+    <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="css/stylesheet.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
     tailwind.config = {
         theme: {
             extend: {},
         },
     };
-</script>
-<style>
-    .hidden {
-    display: none;
-}
-
-</style>
-<script src="https://cdn.tailwindcss.com"></script>
-    
-    
-		<style>
-		* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
- .stem {
-     font-size: 40;
- }
- main {
-     margin-top: 30px;
-     padding-top: 7px;
- }
-header {
-    color: white;
-    background-color: black;
-}
-.head-tit {
-    font-size: 20px;
-    margin-left: 0px;
-    margin-top: 0;
-    padding-top: 18px;
-}
-.home-button {
-    text-decoration: none;
-    color: white;
-    margin-right: 3px;
-    transition: background 0.3s;
-    display: inline-block;
-    padding: 0 0 0 0;
-    margin: 0 0 0 0
-}
-
-.home-button:hover {
-    background-color: #0056b3;
-}
-		</style>
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        main {
+            margin-top: 30px;
+            padding-top: 7px;
+        }
+        header {
+            color: white;
+            background-color: black;
+        }
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        .btn {
+            padding: 10px 15px;
+            text-align: center;
+            min-width: 150px;
+        }
+    </style>
 </head>
 <body>
     <header class="flex justify-between items-center bg-blue-600 text-white p-4">
         <h1 class="text-xl font-bold">STEMediaHub</h1>
-        <!-- Menu Button -->
         <button id="menuButton" class="bg-blue-500 px-4 py-2 rounded flex items-center gap-2">
             <span id="menuIcon" class="transition-transform duration-300">☰</span>
         </button>
     </header>
     
-
-    <!-- Sidebar Menu -->
     <div id="sidebarMenu" class="fixed top-0 left-0 h-full w-64 bg-white shadow-lg transform -translate-x-full transition-transform duration-300">
         <div class="p-4 bg-blue-500 text-white flex justify-between items-center">
             <h2 class="text-lg font-bold">Control Panel</h2>
             <button id="closeButton" class="text-xl">&times;</button>
         </div>
         <nav class="p-4">
-            <a href="branch1.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-200 rounded">About the researchers</a>
-            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-200 rounded">Inspiration of the web</a>
-            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-200 rounded">Provide feedback!</a>
+            <a href="misc/about.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-200 rounded">About the researchers</a>>
+            <a href="misc/feedback.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-200 rounded">Provide feedback!</a>
             <hr class="my-2">
         </nav>
     </div>
@@ -94,24 +71,16 @@ header {
 
         menuButton.addEventListener("click", function () {
             sidebarMenu.classList.toggle("-translate-x-full");
-            menuIcon.classList.toggle("rotate-90"); // Rotate icon 90 degrees
+            menuIcon.classList.toggle("rotate-90");
         });
 
         closeButton.addEventListener("click", function () {
             sidebarMenu.classList.add("-translate-x-full");
-            menuIcon.classList.remove("rotate-90"); // Reset rotation
-        });
-
-        // Close menu when clicking outside
-        document.addEventListener("click", function (event) {
-            if (!sidebarMenu.contains(event.target) && !menuButton.contains(event.target)) {
-                sidebarMenu.classList.add("-translate-x-full");
-                menuIcon.classList.remove("rotate-90"); // Reset rotation
-            }
+            menuIcon.classList.remove("rotate-90");
         });
     </script>
 
-        <main>
+    <main>
         <h2 class="who-text">Team 3 Researchers</h2>
         <h1 class="stem-text"><span class="STEM">STEM</span>ediaHub</h1>
         <p class="subtitle">THE ULTIMATE LEARNING GUIDE <br>FOR STEM STUDENTS!</p>
@@ -128,24 +97,9 @@ header {
             <a href="emtech2.html" class="btn violet gap">EMPOWERMENT TECHNOLOGY</a>
         </div>
     </main>
-    <p>
-         
-        
-         
-         
-         
-        <script>
-document.addEventListener("keydown", function (event) {
-    if (event.key === "Escape") {
-        let menuButton = document.getElementById("menuButton");
-        if (menuButton) {
-            menuButton.click(); // Triggers the button's click event
-        }
-    }
-});
-
-        </script>
     
-    </p>
+    <footer class="mt-[200px] p-4 bg-zinc-200 dark:bg-zinc-700">
+        <p class="text-center text-muted-foreground">© 2025 Dolores National High School</p>
+    </footer>
 </body>
 </html>
