@@ -73,10 +73,23 @@
                 font-family: "Plus Jakarta Sans", sans-serif;
             }
         </style>
+        <script>
+            let clickCount = 0;
+            function goToAbout() {
+                clickCount++;
+                if (clickCount === 11) {
+                    window.location.href = 'https://example.com'; // Change to your desired URL
+                }
+            }
+        </script>
+        <script src="https://cdn.tailwindcss.com"></script>
     </head>
     <body>
         <header class="flex justify-between items-center bg-blue-600 text-white p-4">
-            <h1 class="text-xl font-bold">STEMediaHub</h1>
+            <div onclick="goToAbout()">
+                <h1 class="text-xl font-bold select-none" style="pointer-events: none;">STEMediaHub</h1>
+            </div>
+            
             <!-- Menu Button -->
             <button id="menuButton" class="bg-blue-500 px-4 py-2 rounded flex items-center gap-2">
                 <span id="menuIcon" class="transition-transform duration-300">☰</span>
